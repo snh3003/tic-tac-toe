@@ -11,6 +11,9 @@ export class AppComponent {
   winMsg: string = '';
   isCross: boolean = false;
   itemArray: string[] = new Array(9).fill('empty');
+  @Input() player1: string = '';
+  @Input() player2: string = '';
+  canStart: boolean = false;
 
   constructor(private toastr: ToastrService) {}
 
@@ -27,6 +30,15 @@ export class AppComponent {
       return this.toastr.error('Already filled');
     }
     this.checkIsWinner();
+  }
+
+  startGame = (): any => {
+    if (this.player1 && this.player2) {
+      this.canStart = true;
+    }else{
+      return this.toastr.warning('Please enter name');
+    }
+    //this.canStart = true;
   }
 
   checkIsWinner = () => {
