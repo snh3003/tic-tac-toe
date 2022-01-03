@@ -1,23 +1,23 @@
 <div class="container">
-  <div class="pd-4 text-center justify-content-center align-items-center" *ngIf="!canStart">
-    <input 
-      type = "text"
-      class = "form-control"
-      placeholder = "Enter Player 1 name"
-      [(ngModel)] = "player1"
+  <div
+    class="pl-15 pr-15 pt-5 text-center justify-content-center align-items-center"
+    *ngIf="!canStart"
+  >
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Player 1 name"
+      [(ngModel)]="player1"
     />
     <br />
-    <input 
-      type = "text"
-      class = "form-control"
-      placeholder = "Enter Player 2 name"
-      [(ngModel)] = "player2"
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Player 2 name"
+      [(ngModel)]="player2"
     />
     <br />
-    <button 
-      class="btn btn-primary align-items-center"
-      (click) = "startGame()"  
-    >
+    <button class="btn btn-primary align-items-center" (click)="startGame()">
       Submit Names
     </button>
   </div>
@@ -25,26 +25,29 @@
   <div class="row justify-content-center align-items-center" *ngIf="canStart">
     <div class="col col-lg-8">
       <div class="text-center">
-        <h1 [hidden]="isCross" class="text-uppercase text-info">{{ player1 }} turn</h1>
-        <h1 [hidden]="!isCross" class="text-uppercase text-warning">{{ player2 }} turn</h1>
+        <h1 [hidden]="isCross" class="text-uppercase text-info">
+          {{ player1 }} turn
+        </h1>
+        <h1 [hidden]="!isCross" class="text-uppercase text-warning">
+          {{ player2 }} turn
+        </h1>
       </div>
       <div class="grid">
-        <div *ngFor="let item of itemArray; index as i " >
+        <div *ngFor="let item of itemArray; index as i">
           <div class="card">
             <div class="card-box box" (click)="handleClick(i)">
-              <app-icon [iconName]="item" ></app-icon>
+              <app-icon [iconName]="item"></app-icon>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col col-lg-4 text-center" *ngIf="winMsg">
-      <h1 class="text-uppercase">
-        Game over {{ winMsg }}
-      </h1>
+      <h1 class="text-uppercase">Game over {{ winMsg }}</h1>
       <button
-        (click) = "reloadGame()" 
-        class="btn btn-danger text-uppercase pl-5 pr-5">
+        (click)="reloadGame()"
+        class="btn btn-danger text-uppercase pl-5 pr-5"
+      >
         Reload Game
       </button>
     </div>
